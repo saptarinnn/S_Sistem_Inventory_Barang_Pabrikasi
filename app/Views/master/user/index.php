@@ -34,7 +34,7 @@
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
         <div class="flex justify-end">
-            <a href="<?= site_url() ?>users/create" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data</a>
+            <a href="<?= site_url() ?>users/create" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Add Data</a>
         </div>
 
         <div class="flex flex-col mt-4">
@@ -47,7 +47,7 @@
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Fullname</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Username</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Role</th>
-                                    <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Aksi</th>
+                                    <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200">

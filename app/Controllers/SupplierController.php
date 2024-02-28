@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Supplier;
 use CodeIgniter\HTTP\ResponseInterface;
+use Config\Services;
 
 class SupplierController extends BaseController
 {
@@ -39,7 +40,7 @@ class SupplierController extends BaseController
             return view('master/supplier/create', $this->datas);
         }
         # if validation is successful. save data to database
-        $this->users->save([
+        $this->suppliers->save([
             'name'  => trim($this->request->getVar('name')),
         ]);
         # set message and redirect to suppliers
@@ -73,7 +74,7 @@ class SupplierController extends BaseController
             return view('master/supplier/edit', $data);
         }
         # if validation is successful. update data in the database
-        $this->users->update($id, [
+        $this->suppliers->update($id, [
             'name'  => trim($this->request->getVar('name')),
         ]);
         # set message and redirect to suppliers
