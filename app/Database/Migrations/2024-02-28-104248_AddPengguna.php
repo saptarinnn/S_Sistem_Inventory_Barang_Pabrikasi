@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AddUsers extends Migration
+class AddPengguna extends Migration
 {
     public function up()
     {
@@ -23,21 +23,21 @@ class AddUsers extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '150'
             ],
-            'role' => [
+            'peran' => [
                 'type'              => 'ENUM',
                 'constraint'        => array('admin', 'manager', 'gudang', 'pembelian'),
             ],
-            'fullname' => [
+            'nama_lengkap' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '70'
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users');
+        $this->forge->createTable('pengguna');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('pengguna');
     }
 }

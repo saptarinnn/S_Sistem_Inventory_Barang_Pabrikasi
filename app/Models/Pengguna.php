@@ -4,17 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Supplier extends Model
+class Pengguna extends Model
 {
-    protected $table            = 'suppliers';
+    protected $table            = 'pengguna';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
+    protected bool $allowEmptyInserts = false;
     protected $allowedFields    = [
-        'name'
+        'username', 'password', 'peran', 'nama_lengkap'
     ];
 
-    protected bool $allowEmptyInserts = false;
+    public function semuaPeran()
+    {
+        return ['gudang', 'pemblian'];
+    }
 }

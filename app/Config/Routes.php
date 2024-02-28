@@ -26,19 +26,19 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
         return view('layouts/app');
     });
 
-    # Users
-    $routes->get('users', 'UserController::index');
-    $routes->get('users/create', 'UserController::create');
-    $routes->post('users/save', 'UserController::save');
-    $routes->get('users/(:segment)/edit', 'UserController::edit/$1');
-    $routes->post('users/(:segment)/update', 'UserController::update/$1');
-    $routes->get('users/(:segment)/delete', 'UserController::delete/$1');
+    # Pengguna
+    $routes->get('pengguna', 'PenggunaController::index');
+    $routes->get('pengguna/create', 'PenggunaController::create');
+    $routes->post('pengguna/save', 'PenggunaController::save');
+    $routes->get('pengguna/(:segment)/edit', 'PenggunaController::edit/$1');
+    $routes->post('pengguna/(:segment)/update', 'PenggunaController::update/$1');
+    $routes->get('pengguna/(:segment)/delete', 'PenggunaController::delete/$1');
 
-    # Supplier
-    $routes->get('suppliers', 'SupplierController::index');
-    $routes->get('suppliers/create', 'SupplierController::create');
-    $routes->post('suppliers/save', 'SupplierController::save');
-    $routes->get('suppliers/(:segment)/edit', 'SupplierController::edit/$1');
-    $routes->post('suppliers/(:segment)/update', 'SupplierController::update/$1');
-    $routes->get('suppliers/(:segment)/delete', 'SupplierController::delete/$1');
+    # Pemasok
+    // $routes->get('pemasok', 'PemasokController::index');
+    // $routes->get('pemasok/create', 'PemasokController::create');
+    // $routes->post('pemasok/save', 'PemasokController::save');
+    // $routes->get('pemasok/(:segment)/edit', 'PemasokController::edit/$1');
+    // $routes->post('pemasok/(:segment)/update', 'PemasokController::update/$1');
+    // $routes->get('pemasok/(:segment)/delete', 'PemasokController::delete/$1');
 });
