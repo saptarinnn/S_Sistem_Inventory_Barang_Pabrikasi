@@ -1,0 +1,52 @@
+/* 
+    npx tailwindcss -i ./app/Views/css/app.css -o ./public/css/styles.css --watch     
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: "Darker Grotesque", sans-serif;
+    }
+}
+
+@layer components {
+    #dataTableConf thead tr th {
+        @apply font-extrabold border-b border-b-slate-300;
+    }
+
+    #dataTableConf tbody tr:nth-child(odd) {
+        @apply bg-slate-50 hover:bg-slate-100;
+    }
+
+    #dataTableConf tbody tr:nth-child(even) {
+        @apply hover:bg-slate-100;
+    }
+
+    #dataTableConf tbody tr td {
+        @apply py-3 border-b;
+    }
+
+    #dataTableConf_length,
+    #dataTableConf_filter,
+    #dataTableConf_info,
+    #dataTableConf_paginate {
+        @apply m-2 font-semibold text-slate-700;
+    }
+
+    #dataTableConf_length label select {
+        @apply px-2 py-1 mx-1 font-bold border rounded-md shadow-sm border-slate-300 focus:border-slate-400 dark:focus:border-slate-400 focus:ring-slate-400 focus:outline-none focus:ring focus:ring-opacity-40;
+        background: none !important;
+    }
+
+    #dataTableConf_filter label input {
+        @apply px-2 ml-2 border rounded-md shadow-sm border-slate-300 focus:border-slate-400 dark:focus:border-slate-400 focus:ring-slate-400 focus:outline-none focus:ring focus:ring-opacity-40;
+    }
+
+    #dataTableConf_paginate a:not(.disabled):hover,
+    #dataTableConf_paginate .paginate_button.current {
+        @apply font-semibold border-none rounded-lg bg-slate-500;
+        color: #fff !important;
+    }
+}

@@ -5,13 +5,13 @@
     <?= $this->include('layouts/_head') ?>
     <style>
         body {
-            font-family: "Fredoka", sans-serif !important;
+            font-family: "Darker Grotesque", sans-serif !important;
         }
     </style>
 </head>
 
-<body class="bg-gray-100 flex h-full items-center py-16">
-    <main class="w-full max-w-lg mx-auto p-6">
+<body class="font-semibold bg-gray-100 flex h-full items-center py-16">
+    <main class="w-full max-w-md mx-auto p-6">
         <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
             <div class="p-4 sm:p-7">
                 <div class="text-center">
@@ -25,25 +25,25 @@
                         <div class="grid gap-y-4">
                             <!-- Form Group -->
                             <div>
-                                <label for="username" class="block text-sm font-medium mb-2 text-gray-600">Username</label>
-                                <input type="text" id="username" name="username" class="py-3 border px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-slate-500 focus:ring-slate-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Super Admin" autofocus required>
+                                <label for="username" class="block font-bold mb-2 text-gray-600">Username</label>
+                                <input type="text" id="username" name="username" class="py-3 border px-4 block w-full border-gray-200 rounded-lg focus:border-slate-500 focus:ring-slate-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Super Admin" autofocus required>
                             </div>
                             <!-- End Form Group -->
                             <!-- Form Group -->
                             <div>
-                                <label for="password" class="block text-sm font-medium mb-2 text-gray-600">Password</label>
-                                <input type="password" id="password" name="password" class="py-3 border px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-slate-500 focus:ring-slate-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="********" required>
+                                <label for="password" class="block font-bold mb-2 text-gray-600">Password</label>
+                                <input type="password" id="password" name="password" class="py-3 border px-4 block w-full border-gray-200 rounded-lg focus:border-slate-500 focus:ring-slate-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="********" required>
                             </div>
                             <!-- End Form Group -->
 
-                            <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-slate-600 text-white hover:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none">Sign in</button>
+                            <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 font-bold rounded-lg border border-transparent bg-slate-600 text-white hover:bg-slate-700 disabled:opacity-50 disabled:pointer-events-none">Sign in</button>
                         </div>
                     </form>
                     <!-- End Form -->
                 </div>
 
                 <div class="text-center mt-6">
-                    <span class="font-medium text-xs text-gray-400">Sistem Inventory Barang Pabrikasi - 2024</span>
+                    <span class="font-semibold text-sm text-gray-400">Sistem Inventory Barang Pabrikasi - 2024</span>
                 </div>
             </div>
         </div>
