@@ -17,4 +17,9 @@ class User extends Model
     ];
 
     protected bool $allowEmptyInserts = false;
+
+    public function roles()
+    {
+        return ['gudang', 'pembelian'];
+    }
 }

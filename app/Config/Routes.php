@@ -20,4 +20,17 @@ $routes->group('', ['filter' => 'notauth'], static function ($routes) {
 $routes->group('', ['filter' => 'auth'], static function ($routes) {
     # Logout
     $routes->get('logout', 'AuthController::logout');
+
+    # Dashboard
+    $routes->get('dashboard', function () {
+        return view('layouts/app');
+    });
+
+    # Users
+    $routes->get('users', 'UserController::index');
+    $routes->get('users/create', 'UserController::create');
+    $routes->post('users/save', 'UserController::save');
+    $routes->get('users/(:segment)/edit', 'UserController::edit/$1');
+    $routes->post('users/(:segment)/update', 'UserController::update/$1');
+    $routes->get('users/(:segment)/delete', 'UserController::delete/$1');
 });

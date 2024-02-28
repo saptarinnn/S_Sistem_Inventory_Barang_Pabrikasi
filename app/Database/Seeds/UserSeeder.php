@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     {
         $this->db->table('users')->insert([
             'username' => 'admin',
-            'password' => password_hash('Bontang123#', PASSWORD_BCRYPT),
+            'password' => password_hash('qweasd123#', PASSWORD_BCRYPT),
             'role' => 'admin',
             'fullname' => 'super admin',
         ]);
