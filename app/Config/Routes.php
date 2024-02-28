@@ -33,4 +33,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('users/(:segment)/edit', 'UserController::edit/$1');
     $routes->post('users/(:segment)/update', 'UserController::update/$1');
     $routes->get('users/(:segment)/delete', 'UserController::delete/$1');
+
+    # Supplier
+    $routes->get('suppliers', 'UserController::index');
+    $routes->get('suppliers/create', 'UserController::create');
+    $routes->post('suppliers/save', 'UserController::save');
+    $routes->get('suppliers/(:segment)/edit', 'UserController::edit/$1');
+    $routes->post('suppliers/(:segment)/update', 'UserController::update/$1');
+    $routes->get('suppliers/(:segment)/delete', 'UserController::delete/$1');
 });
