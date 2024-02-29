@@ -33,7 +33,7 @@ class PemasokController extends BaseController
     {
         # Validasi Request
         $rules = [
-            'name' => ['required', 'is_unique[pemasok.name]'],
+            'nama' => ['required', 'is_unique[pemasok.nama]'],
         ];
         # Jika Validasi Gagal
         if (!$this->validate($rules)) {
@@ -41,7 +41,7 @@ class PemasokController extends BaseController
         }
         # Jika Validasi Berhasil, Simpan Data Kedalam Database
         $this->pemasok->save([
-            'name' => trim($this->request->getVar('name')),
+            'nama' => trim($this->request->getVar('nama')),
         ]);
         # Atur Pesan dan Arahkan Ke Halaman Pengguna
         session()->setFlashdata("message", 'Data Berhasil Disimpan.');
@@ -75,7 +75,7 @@ class PemasokController extends BaseController
         }
         # Jika Validasi Berhasil. Perbarhi Data Didalam Database
         $this->pemasok->update($id, [
-            'pemasok' => trim($this->request->getVar('pemasok')),
+            'nama' => trim($this->request->getVar('nama')),
         ]);
         # Atur Pesan dan Arahkan Ke Halaman Pengguna
         session()->setFlashdata("message", 'Data Berhasil Disimpan.');

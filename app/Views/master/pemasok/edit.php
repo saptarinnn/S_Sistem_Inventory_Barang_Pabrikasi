@@ -10,16 +10,16 @@
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
 
-        <form method="post" action="<?= site_url('suppliers/' . $supplier->id . '/update') ?>">
+        <form method="post" action="<?= site_url('pemasok/' . $pemasok->id . '/update') ?>">
             <?= csrf_field(); ?>
-            <!-- Supplier Name -->
+            <!-- Nama Pemasok -->
             <div class="mb-4">
-                <label for="name" class="block mb-2 font-bold">Supplier Name</label>
-                <input type="text" id="name" name="name" class="block w-full px-3 py-2 font-bold border border-gray-200 rounded-lg" placeholder="Input supplier name" required value="<?= $supplier->name ?>">
+                <label for="nama" class="block mb-2 font-bold">Nama Pemasok</label>
+                <input type="text" id="nama" name="nama" class="block w-full px-3 py-2 font-bold border border-gray-200 rounded-lg" placeholder="Input nama pemasok" required value="<?= $pemasok->nama ?>">
                 <!-- Error -->
-                <?php if ($validation->getError('name')) : ?>
+                <?php if ($validation->getError('nama')) : ?>
                     <div class='mt-1 mb-4 font-bold text-red-500'>
-                        <?= $error = $validation->getError('name'); ?>
+                        <?= $error = $validation->getError('nama'); ?>
                     </div>
                 <?php endif; ?>
             </div>
