@@ -35,10 +35,10 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('pengguna/(:segment)/delete', 'PenggunaController::delete/$1');
 
     # Pemasok
-    // $routes->get('pemasok', 'PemasokController::index');
-    // $routes->get('pemasok/create', 'PemasokController::create');
-    // $routes->post('pemasok/save', 'PemasokController::save');
-    // $routes->get('pemasok/(:segment)/edit', 'PemasokController::edit/$1');
-    // $routes->post('pemasok/(:segment)/update', 'PemasokController::update/$1');
-    // $routes->get('pemasok/(:segment)/delete', 'PemasokController::delete/$1');
+    $routes->get('pemasok', 'PemasokController::index');
+    $routes->get('pemasok/create', 'PemasokController::create');
+    $routes->post('pemasok/save', 'PemasokController::save');
+    $routes->get('pemasok/(:segment)/edit', 'PemasokController::edit/$1');
+    $routes->post('pemasok/(:segment)/update', 'PemasokController::update/$1');
+    $routes->get('pemasok/(:segment)/delete', 'PemasokController::delete/$1');
 });
