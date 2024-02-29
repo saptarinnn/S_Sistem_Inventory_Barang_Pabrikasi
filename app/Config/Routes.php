@@ -49,4 +49,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('satuan/(:segment)/edit', 'SatuanController::edit/$1');
     $routes->post('satuan/(:segment)/update', 'SatuanController::update/$1');
     $routes->get('satuan/(:segment)/delete', 'SatuanController::delete/$1');
+
+    # Barang
+    $routes->get('barang', 'BarangController::index');
+    $routes->get('barang/create', 'BarangController::create');
+    $routes->post('barang/save', 'BarangController::save');
+    $routes->get('barang/(:segment)/edit', 'BarangController::edit/$1');
+    $routes->post('barang/(:segment)/update', 'BarangController::update/$1');
+    $routes->get('barang/(:segment)/delete', 'BarangController::delete/$1');
 });

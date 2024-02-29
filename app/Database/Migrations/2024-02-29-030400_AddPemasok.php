@@ -17,7 +17,7 @@ class AddPemasok extends Migration
             ],
             'nama' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '20'
+                'constraint'     => '100'
             ],
         ]);
         $this->forge->addKey('id', true);
