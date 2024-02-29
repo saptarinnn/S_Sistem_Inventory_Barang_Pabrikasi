@@ -19,6 +19,6 @@ class Pengguna extends Model
 
     public function semuaPeran()
     {
-        return ['gudang', 'pemblian'];
+        return ['gudang', 'pembelian'];
     }
 }

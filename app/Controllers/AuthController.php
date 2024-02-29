@@ -3,18 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\User;
+use App\Models\Pengguna;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
 
 class AuthController extends BaseController
 {
-    protected $users, $session, $validation;
+    protected $pengguna, $session, $validation;
     public function __construct()
     {
         $this->session = session();
         $this->validation = Services::validation();
-        $this->users = new User();
+        $this->pengguna = new Pengguna();
     }
     public function login()
     {
@@ -23,7 +23,7 @@ class AuthController extends BaseController
     public function loginPost()
     {
         # Ambil data sesuai username dalam database
-        $data = $this->users->where('username', $this->request->getVar('username'))->first();
+        $data = $this->pengguna->where('username', $this->request->getVar('username'))->first();
         # Jika data ada
         if ($data) {
             # Verifikasi password
@@ -32,11 +32,11 @@ class AuthController extends BaseController
             if ($password) {
                 # Set data dalam session
                 $this->session->set([
-                    'id'        => $data->id,
-                    'username'  => $data->username,
-                    'role'      => $data->role,
-                    'fullname'  => $data->fullname,
-                    'logged_in' => TRUE
+                    'id'            => $data->id,
+                    'username'      => $data->username,
+                    'peran'         => $data->peran,
+                    'nama_lengkap'  => $data->nama_lengkap,
+                    'logged_in'     => TRUE
                 ]);
                 # Arahkan ke dashboard
                 return redirect()->to('dashboard');

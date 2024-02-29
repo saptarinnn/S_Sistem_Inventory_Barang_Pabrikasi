@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Pengguna;
 use CodeIgniter\HTTP\ResponseInterface;
+use Config\Services;
 
 class PenggunaController extends BaseController
 {
@@ -34,8 +35,8 @@ class PenggunaController extends BaseController
         # validation
         $rules = [
             'username'  => ['required', 'is_unique[pengguna.username]'],
-            'role'      => ['required'],
-            'fullname'  => ['required'],
+            'peran'      => ['required'],
+            'nama_lengkap'  => ['required'],
         ];
         # if validation fails
         if (!$this->validate($rules)) {
@@ -45,8 +46,8 @@ class PenggunaController extends BaseController
         $this->pengguna->save([
             'username'  => trim($this->request->getVar('username')),
             'password'  => password_hash('qweasd123#', PASSWORD_BCRYPT),
-            'role'      => trim($this->request->getVar('role')),
-            'fullname'  => trim($this->request->getVar('fullname')),
+            'peran'      => trim($this->request->getVar('peran')),
+            'nama_lengkap'  => trim($this->request->getVar('nama_lengkap')),
         ]);
         # set message and redirect to pengguna
         session()->setFlashdata("message", 'Data Berhasil Disimpan.');
@@ -67,9 +68,9 @@ class PenggunaController extends BaseController
     {
         # validation
         $rules = [
-            'username'  => ['required', 'is_unique[pengguna.username,id,{id}]'],
-            'role'      => ['required'],
-            'fullname'  => ['required'],
+            'username'  => 'required|is_unique[pengguna.username,id,' . $id . ']',
+            'peran'      => 'required',
+            'nama_lengkap'  => 'required',
         ];
         # if validation fails
         if (!$this->validate($rules)) {
@@ -78,14 +79,15 @@ class PenggunaController extends BaseController
                 'main_title'    => 'Data Pengguna',
                 'sub_title'     => 'Halaman',
                 'pengguna'      => $this->pengguna->where('id', $id)->first(),
+                'semuaPeran'    => $this->pengguna->semuaPeran(),
             ];
             return view('master/pengguna/edit', $data);
         }
         # if validation is successful. update data in the database
         $this->pengguna->update($id, [
             'username'  => trim($this->request->getVar('username')),
-            'role'      => trim($this->request->getVar('role')),
-            'fullname'  => trim($this->request->getVar('fullname')),
+            'peran'      => trim($this->request->getVar('peran')),
+            'nama_lengkap'  => trim($this->request->getVar('nama_lengkap')),
         ]);
         # set message and redirect to pengguna
         session()->setFlashdata("message", 'Data Berhasil Disimpan.');

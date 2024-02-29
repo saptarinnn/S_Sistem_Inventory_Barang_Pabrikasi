@@ -14,5 +14,11 @@ class PenggunaSeeder extends Seeder
             'peran'         => 'admin',
             'nama_lengkap'  => 'super admin',
         ]);
+        $this->db->table('pengguna')->insert([
+            'username'      => 'manager',
+            'password'      => password_hash('qweasd123#', PASSWORD_BCRYPT),
+            'peran'         => 'manager',
+            'nama_lengkap'  => 'manager',
+        ]);
     }
 }
