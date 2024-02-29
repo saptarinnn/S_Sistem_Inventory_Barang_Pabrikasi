@@ -41,4 +41,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('pemasok/(:segment)/edit', 'PemasokController::edit/$1');
     $routes->post('pemasok/(:segment)/update', 'PemasokController::update/$1');
     $routes->get('pemasok/(:segment)/delete', 'PemasokController::delete/$1');
+
+    # Satuan
+    $routes->get('satuan', 'SatuanController::index');
+    $routes->get('satuan/create', 'SatuanController::create');
+    $routes->post('satuan/save', 'SatuanController::save');
+    $routes->get('satuan/(:segment)/edit', 'SatuanController::edit/$1');
+    $routes->post('satuan/(:segment)/update', 'SatuanController::update/$1');
+    $routes->get('satuan/(:segment)/delete', 'SatuanController::delete/$1');
 });
