@@ -54,6 +54,35 @@
                     Data Barang
                 </a>
             </li>
+
+            <li class="pt-4 pb-1 text-sm font-bold text-slate-400">Transaksi</li>
+
+            <li>
+                <a class="flex font-bold items-center gap-x-3 py-2 px-2.5 text-base text-slate-500 rounded-lg hover:bg-gray-100" href="<?= site_url('barang-masuk') ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                        <path d="M8.75 6h-1.5V3.56L6.03 4.78a.75.75 0 0 1-1.06-1.06l2.5-2.5a.75.75 0 0 1 1.06 0l2.5 2.5a.75.75 0 1 1-1.06 1.06L8.75 3.56V6H11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.25v5.25a.75.75 0 0 0 1.5 0V6Z" />
+                    </svg>
+                    Barang Masuk
+                </a>
+            </li>
+
+            <li>
+                <a class="flex font-bold items-center gap-x-3 py-2 px-2.5 text-base text-slate-500 rounded-lg hover:bg-gray-100" href="<?= site_url('') ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                        <path d="M8 1a.75.75 0 0 1 .75.75V5h-1.5V1.75A.75.75 0 0 1 8 1ZM7.25 5v4.44L6.03 8.22a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l2.5-2.5a.75.75 0 1 0-1.06-1.06L8.75 9.44V5H11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2.25Z" />
+                    </svg>
+                    Barang Keluar
+                </a>
+            </li>
+
+            <li>
+                <a class="flex font-bold items-center gap-x-3 py-2 px-2.5 text-base text-slate-500 rounded-lg hover:bg-gray-100" href="<?= site_url('') ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd" d="M1 8.74c0 .983.713 1.825 1.69 1.943.904.108 1.817.19 2.737.243.363.02.688.231.85.556l1.052 2.103a.75.75 0 0 0 1.342 0l1.052-2.103c.162-.325.487-.535.85-.556.92-.053 1.833-.134 2.738-.243.976-.118 1.689-.96 1.689-1.942V4.259c0-.982-.713-1.824-1.69-1.942a44.45 44.45 0 0 0-10.62 0C1.712 2.435 1 3.277 1 4.26v4.482Zm3-3.49a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 4 5.25ZM4.75 7a.75.75 0 0 0 0 1.5h2.5a.75.75 0 0 0 0-1.5h-2.5Z" clip-rule="evenodd" />
+                    </svg>
+                    Permintaan Barang
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
