@@ -4,16 +4,16 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AddBarangMasuk extends Migration
+class AddBarangKeluar extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'kode_barangmasuk' => [
+            'kode_barangkeluar' => [
                 'type'              => 'VARCHAR',
                 'constraint'        => 15,
             ],
-            'tgl_barangmasuk' => [
+            'tgl_barangkeluar' => [
                 'type'           => 'DATE',
             ],
             'barang_kode' => [
@@ -25,24 +25,37 @@ class AddBarangMasuk extends Migration
                 'constraint'     => 50,
                 'null'           => true,
             ],
-            'jumlah_barangmasuk' => [
+            'jumlah_barangkeluar' => [
                 'type'           => 'INT',
                 'constraint'     => 10,
             ],
-            'pemasok_id' => [
-                'type'              => 'INT',
-                'constraint'        => 10,
-                'unsigned'          => true,
+            'user' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 150,
+                'null'           => true,
+            ],
+            'area' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 150,
+                'null'           => true,
+            ],
+            'job_so' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'null'           => true,
+            ],
+            'ket' => [
+                'type'           => 'TEXT',
+                'null'           => true,
             ],
         ]);
         $this->forge->addKey('kode_brgmasuk', true);
         $this->forge->addForeignKey('barang_kode', 'barang', 'kode', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('pemasok_id', 'pemasok', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('barangmasuk');
+        $this->forge->createTable('barangkeluar');
     }
 
     public function down()
     {
-        $this->forge->dropTable('barangmasuk');
+        $this->forge->dropTable('barangkeluar');
     }
 }

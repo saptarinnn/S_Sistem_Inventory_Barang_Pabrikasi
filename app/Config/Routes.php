@@ -64,4 +64,11 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('barang-masuk/setkode', 'BarangMasukController::setkode');
     $routes->post('barang-masuk/save', 'BarangMasukController::save');
     $routes->get('barang-masuk/(:segment)/delete', 'BarangMasukController::delete/$1');
+
+    # Barang Keluar
+    $routes->get('barang-keluar', 'BarangKeluarController::index');
+    $routes->get('barang-keluar/create', 'BarangKeluarController::create');
+    $routes->post('barang-keluar/setkode', 'BarangKeluarController::setkode');
+    $routes->post('barang-keluar/save', 'BarangKeluarController::save');
+    $routes->get('barang-keluar/(:segment)/delete', 'BarangKeluarController::delete/$1');
 });

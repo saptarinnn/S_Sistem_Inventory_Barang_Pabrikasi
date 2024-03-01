@@ -5,22 +5,25 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Barang;
 use App\Models\BarangMasuk;
+use App\Models\Pemasok;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
 
 class BarangMasukController extends BaseController
 {
-    protected $validation, $barang, $barang_masuk, $datas;
+    protected $validation, $barang, $barang_masuk, $pemasok, $datas;
     public function __construct()
     {
         $this->validation = Services::validation();
         $this->barang = new Barang();
         $this->barang_masuk = new BarangMasuk();
+        $this->pemasok = new Pemasok();
         $this->datas = [
             'main_title'        => 'Data Barang Masuk',
             'sub_title'         => 'Halaman',
             'semuaBarangMasuk'  => $this->barang_masuk->joinBarang(),
             'semuaBarang'       => $this->barang->findAll(),
+            'semuaPemasok'  => $this->pemasok->findAll(),
             'validation'        => $this->validation,
         ];
     }
@@ -49,8 +52,8 @@ class BarangMasukController extends BaseController
             'kode_barangmasuk'   => ['required', 'is_unique[barangmasuk.kode_barangmasuk]'],
             'tgl_barangmasuk'    => ['required'],
             'barang_kode'        => ['required'],
-            'ukuran'             => ['required'],
             'jumlah_barangmasuk' => ['required', 'numeric'],
+            'pemasok_id'             => ['required'],
         ];
         # Jika Validasi Gagal
         if (!$this->validate($rules)) {
@@ -65,6 +68,7 @@ class BarangMasukController extends BaseController
             'barang_kode'        => trim($this->request->getVar('barang_kode')),
             'ukuran'             => trim($this->request->getVar('ukuran')),
             'jumlah_barangmasuk' => trim($this->request->getVar('jumlah_barangmasuk')),
+            'pemasok_id'        => trim($this->request->getVar('pemasok_id')),
         ]);
         # Update Stok Barang 
         $this->barang->update($this->request->getVar('barang_kode'), [

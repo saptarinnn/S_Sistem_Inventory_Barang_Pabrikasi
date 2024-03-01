@@ -11,19 +11,17 @@ use Config\Services;
 
 class BarangController extends BaseController
 {
-    protected $validation, $barang, $satuan, $pemasok, $datas;
+    protected $validation, $barang, $satuan, $datas;
     public function __construct()
     {
         $this->validation = Services::validation();
         $this->barang = new Barang();
         $this->satuan = new Satuan();
-        $this->pemasok = new Pemasok();
         $this->datas = [
             'main_title'    => 'Data Barang',
             'sub_title'     => 'Halaman',
             'semuaBarang'   => $this->barang->joinSatuanPemasok(),
             'semuaSatuan'   => $this->satuan->findAll(),
-            'semuaPemasok'  => $this->pemasok->findAll(),
             'validation'    => $this->validation,
         ];
     }
@@ -41,7 +39,6 @@ class BarangController extends BaseController
         $rules = [
             'kode'          => ['required', 'is_unique[barang.kode]'],
             'satuan_id'     => ['required'],
-            'pemasok_id'    => ['required'],
             'nama_barang'   => ['required'],
         ];
         # Jika Validasi Gagal
@@ -53,7 +50,6 @@ class BarangController extends BaseController
         $this->barang->save([
             'kode'            => trim($this->request->getVar('kode')),
             'satuan_id'     => trim($this->request->getVar('satuan_id')),
-            'pemasok_id'    => trim($this->request->getVar('pemasok_id')),
             'nama_barang'   => trim($this->request->getVar('nama_barang')),
             'jumlah'        => '0',
             'tempat'        => trim($this->request->getVar('tempat')),
@@ -70,7 +66,6 @@ class BarangController extends BaseController
             'sub_title'     => 'Halaman',
             'barang'        => $this->barang->where('kode', $id)->first(),
             'semuaSatuan'   => $this->satuan->findAll(),
-            'semuaPemasok'  => $this->pemasok->findAll(),
         ];
         return view('master/barang/edit', $data);
     }
@@ -80,7 +75,6 @@ class BarangController extends BaseController
         $rules = [
             'kode'          => 'required|is_unique[barang.kode,kode,' . $id . ']',
             'satuan_id'     => ['required'],
-            'pemasok_id'    => ['required'],
             'nama_barang'   => ['required'],
         ];
         # Jika Validasi Gagal
@@ -91,7 +85,6 @@ class BarangController extends BaseController
                 'sub_title'     => 'Halaman',
                 'barang'        => $this->barang->where('kode', $id)->first(),
                 'semuaSatuan'   => $this->satuan->findAll(),
-                'semuaPemasok'  => $this->pemasok->findAll(),
             ];
             return view('master/barang/edit', $data);
         }
@@ -99,7 +92,6 @@ class BarangController extends BaseController
         $this->barang->update($id, [
             'kode'            => trim($this->request->getVar('kode')),
             'satuan_id'     => trim($this->request->getVar('satuan_id')),
-            'pemasok_id'    => trim($this->request->getVar('pemasok_id')),
             'nama_barang'   => trim($this->request->getVar('nama_barang')),
             'tempat'        => trim($this->request->getVar('tempat')),
         ]);

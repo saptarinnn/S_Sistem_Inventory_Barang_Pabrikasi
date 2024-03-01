@@ -34,7 +34,7 @@
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
         <div class="flex justify-end">
-            <a href="<?= site_url('pemasok/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data Data</a>
+            <a href="<?= site_url('pemasok/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data</a>
         </div>
 
         <div class="flex flex-col mt-4">

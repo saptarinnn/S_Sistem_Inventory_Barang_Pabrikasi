@@ -14,14 +14,21 @@ class Barang extends Model
     protected $protectFields    = true;
     protected bool $allowEmptyInserts = false;
     protected $allowedFields    = [
-        'kode', 'satuan_id', 'pemasok_id', 'nama_barang', 'jumlah', 'tempat'
+        'kode', 'satuan_id', 'nama_barang', 'jumlah', 'tempat'
     ];
 
     function joinSatuanPemasok()
     {
         return $this->db->table('barang')
             ->join('satuan', 'satuan.id = barang.satuan_id')
-            ->join('pemasok', 'pemasok.id = barang.pemasok_id')
+            ->get()
+            ->getResultObject();
+    }
+    function joinSatuanNotZero()
+    {
+        return $this->db->table('barang')
+            ->join('satuan', 'satuan.id = barang.satuan_id')
+            ->where('barang.jumlah >', '0')
             ->get()
             ->getResultObject();
     }

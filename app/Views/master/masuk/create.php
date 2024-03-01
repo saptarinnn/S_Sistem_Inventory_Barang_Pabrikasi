@@ -56,7 +56,7 @@
             <!-- Ukuran -->
             <div class="mb-4">
                 <label for="ukuran" class="block mb-2 font-bold">Ukuran</label>
-                <input type="text" id="ukuran" name="ukuran" class="block w-full px-3 py-2 font-bold border border-gray-200 rounded-lg" placeholder="Input ukuran" required>
+                <input type="text" id="ukuran" name="ukuran" class="block w-full px-3 py-2 font-bold border border-gray-200 rounded-lg" placeholder="Input ukuran">
                 <!-- Error -->
                 <?php if ($validation->getError('ukuran')) : ?>
                     <div class='mt-1 mb-4 font-bold text-red-500'>
@@ -73,6 +73,23 @@
                 <?php if ($validation->getError('jumlah_barangmasuk')) : ?>
                     <div class='mt-1 mb-4 font-bold text-red-500'>
                         <?= $error = $validation->getError('jumlah_barangmasuk'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Pemasok -->
+            <div class="mb-4">
+                <label for="pemasok_id" class="block mb-2 font-bold">Pemasok</label>
+                <select name="pemasok_id" id="pemasok_id" required class="block w-full px-3 py-2 font-bold border border-gray-200 rounded-lg">
+                    <option value="">Select One</option>
+                    <?php foreach ($semuaPemasok as $pemasok) : ?>
+                        <option value="<?= $pemasok->id ?>"><?= ucwords($pemasok->nama) ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <!-- Error -->
+                <?php if ($validation->getError('pemasok_id')) : ?>
+                    <div class='mt-1 mb-4 font-bold text-red-500'>
+                        <?= $error = $validation->getError('pemasok_id'); ?>
                     </div>
                 <?php endif; ?>
             </div>

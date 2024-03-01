@@ -18,11 +18,11 @@ class AddBarang extends Migration
                 'constraint'        => 10,
                 'unsigned'          => true,
             ],
-            'pemasok_id' => [
-                'type'              => 'INT',
-                'constraint'        => 10,
-                'unsigned'          => true,
-            ],
+            // 'pemasok_id' => [
+            //     'type'              => 'INT',
+            //     'constraint'        => 10,
+            //     'unsigned'          => true,
+            // ],
             'nama_barang' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 150,
@@ -38,8 +38,8 @@ class AddBarang extends Migration
             ],
         ]);
         $this->forge->addKey('kode', true);
-        $this->forge->addForeignKey('satuan_id', 'satuan', 'id');
-        $this->forge->addForeignKey('pemasok_id', 'pemasok', 'id');
+        $this->forge->addForeignKey('satuan_id', 'satuan', 'id', 'CASCADE', 'CASCADE');
+        // $this->forge->addForeignKey('pemasok_id', 'pemasok', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('barang');
     }
 

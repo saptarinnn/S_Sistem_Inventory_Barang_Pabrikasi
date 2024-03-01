@@ -34,7 +34,7 @@
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
         <div class="flex justify-end">
-            <a href="<?= site_url('barang/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data Data</a>
+            <a href="<?= site_url('barang/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data</a>
         </div>
 
         <div class="flex flex-col mt-4">
@@ -47,7 +47,6 @@
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Kode</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Nama</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Satuan</th>
-                                    <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Pemasok</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Jumlah</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Tempat</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Aksi</th>
@@ -59,7 +58,6 @@
                                         <td class="font-semibold text-slate-900"><?= strtoupper($barang->kode) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barang->nama_barang) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barang->nama_satuan) ?></td>
-                                        <td class="font-semibold text-slate-900"><?= ucwords($barang->nama) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barang->jumlah) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barang->tempat) ?></td>
                                         <td class="flex gap-2">
