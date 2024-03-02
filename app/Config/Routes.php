@@ -71,4 +71,11 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('barang-keluar/setkode', 'BarangKeluarController::setkode');
     $routes->post('barang-keluar/save', 'BarangKeluarController::save');
     $routes->get('barang-keluar/(:segment)/delete', 'BarangKeluarController::delete/$1');
+
+    # Permintaan Barang
+    $routes->get('permintaan', 'PermintaanController::index');
+    $routes->get('permintaan/create', 'PermintaanController::create');
+    $routes->post('permintaan/save', 'PermintaanController::save');
+    $routes->get('permintaan/(:segment)/confirm', 'PermintaanController::confirm/$1');
+    $routes->get('permintaan/(:segment)/cancel', 'PermintaanController::cancel/$1');
 });
