@@ -34,7 +34,12 @@
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
         <div class="flex justify-end">
-            <a href="<?= site_url('barang-keluar/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data</a>
+            <?php if (session('peran') == 'admin' || session('peran') == 'gudang') : ?>
+                <a href="<?= site_url('barang-keluar/create') ?>" class="px-3 py-1 pb-2 font-semibold text-white transition duration-300 rounded-md bg-slate-500 hover:bg-slate-600">Tambah Data</a>
+            <?php endif; ?>
+            <?php if (session('peran') == 'admin' || session('peran') == 'manager') : ?>
+                <a href="<?= site_url('barang-keluar/laporan') ?>" target="_blank" class="px-2 py-1 pb-2 text-sm font-semibold text-white transition duration-300 bg-green-600 rounded-md hover:bg-green-700">Laporan</a>
+            <?php endif; ?>
         </div>
 
         <div class="flex flex-col mt-4">
@@ -53,7 +58,9 @@
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Area</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">No. JOB/SO</th>
                                     <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Ket.</th>
-                                    <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Aksi</th>
+                                    <?php if (session('peran') == 'admin' || session('peran') == 'gudang') : ?>
+                                        <th scope="col" class="px-6 py-3 font-semibold capitalize text-slate-900 text-start">Aksi</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200">
@@ -68,13 +75,15 @@
                                         <td class="font-semibold text-slate-900"><?= ucwords($barangKeluar->area) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barangKeluar->job_so) ?></td>
                                         <td class="font-semibold text-slate-900"><?= ucwords($barangKeluar->ket) ?></td>
-                                        <td>
-                                            <a onclick="return confirm('Yakin Hapus Data ?')" href="<?= site_url('barang-keluar/' . $barangKeluar->kode_barangkeluar . '/delete') ?>" class="font-semibold text-red-800 hover:bg-red-300">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                                                    <path fill-rule="evenodd" d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.815 8.15A1.5 1.5 0 0 0 5.357 15h5.285a1.5 1.5 0 0 0 1.493-1.35l.815-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25Zm2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75h-1.5ZM6.05 6a.75.75 0 0 1 .787.713l.275 5.5a.75.75 0 0 1-1.498.075l-.275-5.5A.75.75 0 0 1 6.05 6Zm3.9 0a.75.75 0 0 1 .712.787l-.275 5.5a.75.75 0 0 1-1.498-.075l.275-5.5a.75.75 0 0 1 .786-.711Z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </td>
+                                        <?php if (session('peran') == 'admin' || session('peran') == 'gudang') : ?>
+                                            <td>
+                                                <a onclick="return confirm('Yakin Hapus Data ?')" href="<?= site_url('barang-keluar/' . $barangKeluar->kode_barangkeluar . '/delete') ?>" class="font-semibold text-red-800 hover:bg-red-300">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                                        <path fill-rule="evenodd" d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.815 8.15A1.5 1.5 0 0 0 5.357 15h5.285a1.5 1.5 0 0 0 1.493-1.35l.815-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25Zm2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75h-1.5ZM6.05 6a.75.75 0 0 1 .787.713l.275 5.5a.75.75 0 0 1-1.498.075l-.275-5.5A.75.75 0 0 1 6.05 6Zm3.9 0a.75.75 0 0 1 .712.787l-.275 5.5a.75.75 0 0 1-1.498-.075l.275-5.5a.75.75 0 0 1 .786-.711Z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            </td>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

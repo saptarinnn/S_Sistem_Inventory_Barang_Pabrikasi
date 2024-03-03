@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\BarangKeluar;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
+use Dompdf\Dompdf;
 
 class BarangKeluarController extends BaseController
 {
@@ -19,7 +20,7 @@ class BarangKeluarController extends BaseController
         $this->barang_keluar = new BarangKeluar();
         $this->datas = [
             'main_title'        => 'Data Barang Keluar',
-            'sub_title'         => 'Halaman',
+            'sub_title'         => 'Transaksi',
             'semuaBarangKeluar' => $this->barang_keluar->joinBarang(),
             'semuaBarang'       => $this->barang->joinSatuanNotZero(),
             'validation'        => $this->validation,
@@ -95,5 +96,22 @@ class BarangKeluarController extends BaseController
         # Atur Pesan dan Arahkan Ke Halaman Barang
         session()->setFlashdata('message', 'Data Berhasil Dihapus.');
         return redirect()->to('barang-keluar');
+    }
+    public function laporan()
+    {
+        # Nama File PDF
+        $nama_file = date('y-m-d-H-i-s')  . '-barang-laporan';
+        # Memanggil dan menggunakan kelas DomPDF
+        $dompdf = new Dompdf();
+        # Memuat Konten HTML
+        $dompdf->loadHtml(view('master\keluar\laporan', [
+            'datas' => $this->barang_keluar->joinBarang(),
+        ]));
+        # Mengatur Ukuran dan Orientasi Kertas
+        $dompdf->setPaper('A4', 'landscape');
+        # Render HTML Menjadi PDF
+        $dompdf->render();
+        # Unduh PDF Sesuai dengan Nama File
+        $dompdf->stream($nama_file);
     }
 }

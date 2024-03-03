@@ -24,4 +24,12 @@ class Permintaan extends Model
             ->get()
             ->getResultObject();
     }
+    function joinBarangStatus($status)
+    {
+        return $this->db->table('permintaan')
+            ->join('barang', 'barang.kode = permintaan.barang_kode')
+            ->where('status_permintaan', $status)
+            ->get()
+            ->getResultObject();
+    }
 }

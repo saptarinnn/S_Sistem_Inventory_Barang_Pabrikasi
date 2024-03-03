@@ -46,6 +46,38 @@ class AuthController extends BaseController
         $this->session->setFlashdata('error', '');
         return redirect()->back();
     }
+    public function changePass()
+    {
+        return view('master/change-password', [
+            'main_title'    => 'Rubah Password',
+            'sub_title'     => 'Rubah Password',
+            'validation'    => \Config\Services::validation(),
+        ]);
+    }
+    public function changePassword($id)
+    {
+        # Validasi Request
+        $rules = [
+            'nama_lengkap'  => ['required'],
+            'username'      => ['required'],
+            'password_baru' => ['required'],
+        ];
+        # Jika Validasi Gagal
+        if (!$this->validate($rules)) {
+            return view('master/change-password', [
+                'main_title'    => 'Rubah Password',
+                'sub_title'     => 'Rubah Password',
+                'validation'    => \Config\Services::validation(),
+            ]);
+        }
+        # Jika Validasi Berhasil, Rubah Data Kedalam Database
+        $this->pengguna->update($id, [
+            'password' => trim(password_hash($this->request->getVar('password_baru'), PASSWORD_BCRYPT)),
+        ]);
+        # Atur Pesan dan Arahkan Ke Halaman Rubah Password
+        session()->setFlashdata("message", 'Password Berhasil Dirubah.');
+        return redirect()->to('change-password');
+    }
     public function logout()
     {
         # Hapus data session dan arahkan ke login

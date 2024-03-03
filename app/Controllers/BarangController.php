@@ -8,6 +8,7 @@ use App\Models\Pemasok;
 use App\Models\Satuan;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
+use Dompdf\Dompdf;
 
 class BarangController extends BaseController
 {
@@ -106,5 +107,22 @@ class BarangController extends BaseController
         # Atur Pesan dan Arahkan Ke Halaman Barang
         session()->setFlashdata('message', 'Data Berhasil Dihapus.');
         return redirect()->to('barang');
+    }
+    public function laporan()
+    {
+        # Nama File PDF
+        $nama_file = date('y-m-d-H-i-s')  . '-barang-laporan';
+        # Memanggil dan menggunakan kelas DomPDF
+        $dompdf = new Dompdf();
+        # Memuat Konten HTML
+        $dompdf->loadHtml(view('master\barang\laporan', [
+            'datas' => $this->barang->joinSatuanPemasok(),
+        ]));
+        # Mengatur Ukuran dan Orientasi Kertas
+        $dompdf->setPaper('A4', 'landscape');
+        # Render HTML Menjadi PDF
+        $dompdf->render();
+        # Unduh PDF Sesuai dengan Nama File
+        $dompdf->stream($nama_file);
     }
 }

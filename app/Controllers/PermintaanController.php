@@ -8,6 +8,7 @@ use App\Models\Pemasok;
 use App\Models\Permintaan;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
+use Dompdf\Dompdf;
 
 class PermintaanController extends BaseController
 {
@@ -19,7 +20,7 @@ class PermintaanController extends BaseController
         $this->barang = new Barang();
         $this->datas = [
             'main_title'    => 'Data Permintaan Barang',
-            'sub_title'     => 'Halaman',
+            'sub_title'     => 'Transaksi',
             'semuaBarang'   => $this->barang->joinSatuanPemasok(),
             'semuaPermintaan'   => $this->permintaan->joinBarang(),
             'validation'    => $this->validation,
@@ -80,5 +81,22 @@ class PermintaanController extends BaseController
         # Atur Pesan dan Arahkan Ke Halaman Barang
         session()->setFlashdata('message', 'Permintaan Barang Tidak Diterima.');
         return redirect()->to('permintaan');
+    }
+    public function laporan()
+    {
+        # Nama File PDF
+        $nama_file = date('y-m-d-H-i-s')  . '-permintaan-barang-laporan';
+        # Memanggil dan menggunakan kelas DomPDF
+        $dompdf = new Dompdf();
+        # Memuat Konten HTML
+        $dompdf->loadHtml(view('master\permintaan\laporan', [
+            'datas' => $this->permintaan->joinBarang(),
+        ]));
+        # Mengatur Ukuran dan Orientasi Kertas
+        $dompdf->setPaper('A4', 'landscape');
+        # Render HTML Menjadi PDF
+        $dompdf->render();
+        # Unduh PDF Sesuai dengan Nama File
+        $dompdf->stream($nama_file);
     }
 }

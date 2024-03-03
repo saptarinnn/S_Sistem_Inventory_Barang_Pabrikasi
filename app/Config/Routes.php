@@ -21,10 +21,12 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     # Logout
     $routes->get('logout', 'AuthController::logout');
 
+    # Change Password
+    $routes->get('change-password', 'AuthController::changePass');
+    $routes->post('change-password/(:segment)', 'AuthController::changePassword/$1');
+
     # Dashboard
-    $routes->get('dashboard', function () {
-        return view('layouts/app');
-    });
+    $routes->get('dashboard', 'DashboardController::index');
 
     # Pengguna
     $routes->get('pengguna', 'PenggunaController::index');
@@ -57,6 +59,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->get('barang/(:segment)/edit', 'BarangController::edit/$1');
     $routes->post('barang/(:segment)/update', 'BarangController::update/$1');
     $routes->get('barang/(:segment)/delete', 'BarangController::delete/$1');
+    $routes->get('barang/laporan', 'BarangController::laporan');
 
     # Barang Masuk
     $routes->get('barang-masuk', 'BarangMasukController::index');
@@ -64,6 +67,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('barang-masuk/setkode', 'BarangMasukController::setkode');
     $routes->post('barang-masuk/save', 'BarangMasukController::save');
     $routes->get('barang-masuk/(:segment)/delete', 'BarangMasukController::delete/$1');
+    $routes->get('barang-masuk/laporan', 'BarangMasukController::laporan');
 
     # Barang Keluar
     $routes->get('barang-keluar', 'BarangKeluarController::index');
@@ -71,6 +75,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('barang-keluar/setkode', 'BarangKeluarController::setkode');
     $routes->post('barang-keluar/save', 'BarangKeluarController::save');
     $routes->get('barang-keluar/(:segment)/delete', 'BarangKeluarController::delete/$1');
+    $routes->get('barang-keluar/laporan', 'BarangKeluarController::laporan');
 
     # Permintaan Barang
     $routes->get('permintaan', 'PermintaanController::index');
@@ -78,4 +83,5 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
     $routes->post('permintaan/save', 'PermintaanController::save');
     $routes->get('permintaan/(:segment)/confirm', 'PermintaanController::confirm/$1');
     $routes->get('permintaan/(:segment)/cancel', 'PermintaanController::cancel/$1');
+    $routes->get('permintaan/laporan', 'PermintaanController::laporan');
 });
