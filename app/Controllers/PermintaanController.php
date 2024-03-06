@@ -89,7 +89,7 @@ class PermintaanController extends BaseController
         # Memanggil dan menggunakan kelas DomPDF
         $dompdf = new Dompdf();
         # Memuat Konten HTML
-        $dompdf->loadHtml(view('master\permintaan\laporan', [
+        $dompdf->loadHtml(view('permintaa_laporan', [
             'datas' => $this->permintaan->joinBarang(),
         ]));
         # Mengatur Ukuran dan Orientasi Kertas

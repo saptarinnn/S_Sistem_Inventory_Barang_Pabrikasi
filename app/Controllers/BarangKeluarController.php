@@ -104,7 +104,7 @@ class BarangKeluarController extends BaseController
         # Memanggil dan menggunakan kelas DomPDF
         $dompdf = new Dompdf();
         # Memuat Konten HTML
-        $dompdf->loadHtml(view('master\keluar\laporan', [
+        $dompdf->loadHtml(view('keluar_laporan', [
             'datas' => $this->barang_keluar->joinBarang(),
         ]));
         # Mengatur Ukuran dan Orientasi Kertas

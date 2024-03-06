@@ -27,8 +27,8 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
+        'username'     => 'kopi',
+        'password'     => 'qweasd123',
         'database'     => 'db_pabrikasi',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
